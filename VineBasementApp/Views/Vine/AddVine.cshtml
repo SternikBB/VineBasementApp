@@ -1,0 +1,73 @@
+﻿ @model VineBasementHelpers.Models.VineModels.POST.AddNewVine
+
+</br>
+<form method="post" asp-controller="Vine" asp-action="Create">
+        <div class="row pb-2">
+            <h2 class="text-primary">Panel dodawania wina</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+           <label asp-for="VineName">Nazwa wina</label>
+           <input asp-for="VineName" class="form-control"/>
+           <span asp-validation-for="VineName" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="VineColor">Kolor wina</label>
+           <input  asp-for="VineColor" class="form-control"/>
+           <span asp-validation-for="VineColor" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="VineType">Typ wina</label>
+           <input  asp-for="VineType" class="form-control"/>
+           <span asp-validation-for="VineType" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="YearOfBottling">Rok zabutelkowania</label>
+           <input  asp-for="YearOfBottling" class="form-control"/>
+           <span asp-validation-for="YearOfBottling" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+           <label asp-for="VineyardID">Winiarnia</label>
+           <select asp-for="VineyardID" class="form-control" asp-items="@ViewBag.Vineyards"></select>
+        </div>
+         <div class="mb-3">
+           <label asp-for="AlcoholPercentage">Zawartość procentowa alkoholu</label>
+           <input  asp-for="AlcoholPercentage" class="form-control"/>
+           <span asp-validation-for="AlcoholPercentage" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="Acidity">Kwasowość</label>
+           <input  asp-for="Acidity" class="form-control"/>
+           <span asp-validation-for="Acidity" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="PurchaseDate">Data zakupu</label>
+           <input asp-for="PurchaseDate"  asp-format="{0:yyyy-MM-dd}" class="form-control"/>
+           <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="PurchasePrice">Cena zakupu</label>
+           <input asp-for="PurchasePrice" class="form-control"/>
+           <span asp-validation-for="PurchasePrice" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="AmountOfOwnedBottles">Liczba posiadanych butelek</label>
+           <input asp-for="AmountOfOwnedBottles" class="form-control"/>
+           <span asp-validation-for="AmountOfOwnedBottles" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="AmountOfPurchasedBottles">Liczba kupionych butelek</label>
+           <input asp-for="AmountOfPurchasedBottles" class="form-control"/>
+           <span asp-validation-for="AmountOfPurchasedBottles" class="text-danger"></span>
+        </div>
+        </br>
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-primary" style="width:250px;">Dodaj</button>
+        </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

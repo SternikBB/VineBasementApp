@@ -1,0 +1,44 @@
+﻿@model VineBasementHelpers.Models.VineyardModels.POST.AddNewVineyard
+
+</br>
+<form method="post" asp-controller="Vineyard" asp-action="Create">
+        <div class="row pb-2">
+            <h2 class="text-primary">Panel dodawania winnicy</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+           <label asp-for="VineyardName">Nazwa winnicy</label>
+           <input asp-for="VineyardName" class="form-control"/>
+           <span asp-validation-for="VineyardName" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="VineyardCity">Miasto położenia winnicy</label>
+           <input  asp-for="VineyardCity" class="form-control"/>
+           <span asp-validation-for="VineyardCity" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="VineyardRegion">Region położenia winnicy</label>
+           <input  asp-for="VineyardRegion" class="form-control"/>
+           <span asp-validation-for="VineyardRegion" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+           <label asp-for="VineyardCountry">Kraj położenia winnicy</label>
+           <input  asp-for="VineyardCountry" class="form-control"/>
+           <span asp-validation-for="VineyardCountry" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+           <label asp-for="VineyardYearOfFoundation">Rok założenia winnicy</label>
+           <input  asp-for="VineyardYearOfFoundation" class="form-control"/>
+           <span asp-validation-for="VineyardYearOfFoundation" class="text-danger"></span>
+        </div>
+        </br>
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-primary" style="width:250px;">Dodaj</button>
+        </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

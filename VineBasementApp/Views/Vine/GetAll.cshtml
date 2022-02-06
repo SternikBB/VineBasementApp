@@ -1,0 +1,68 @@
+﻿@using System.ComponentModel
+@using System.Reflection
+@using VineBasementHelpers.Extensions
+
+@model  List<VineBasementHelpers.Models.VineModels.GET.GetAllVines>
+
+@{
+    ViewData["Title"] = "Wina";
+    var listOfPropertiesNames=Model.FirstOrDefault().GetObjectDisplayNames();
+    
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Moje wina</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Vine" asp-action="AddVine" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>&nbsp; Dodaj nowe wino
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+       @foreach(var propertyName in listOfPropertiesNames)
+            {
+                if(!propertyName.Contains("Identyfikator"))
+                {
+                    <th scope="col">@propertyName</th>
+                }
+            }
+             <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var obj in Model)
+        {
+            <tr class="table-dark">
+                <td>@obj.VineName</td>
+                <td>@obj.VineColor</td>
+                <td>@obj.VineType</td>
+                <td>@obj.VineyardName</td>
+                <td>@obj.YearOfBottling</td>
+                <td>@obj.AlcoholPercentage</td> 
+                <td>@obj.Acidity</td>
+                <td>@obj.PurchaseDate.ToShortDateString()</td>
+                <td>@obj.PurchasePrice</td>
+                <td>@obj.AmountOfPurchasedBottles</td>
+                <td>@obj.AmountOfOwnedBottles</td>
+                <td class="text-center">
+                    <div class="w-100 btn-group" role="group">
+                        <a asp-controller="Vine" asp-route-Id="@obj.VineId" asp-action="EditVine" class="btn btn-info">Edytuj</a>
+                        <a asp-controller="Vine" asp-route-Id="@obj.VineId" asp-action="Delete" class="btn btn-warning">Usuń</a>
+                    </div>
+                </td>
+
+            </tr>
+        }
+  </tbody>
+</table>
+
+
+
+

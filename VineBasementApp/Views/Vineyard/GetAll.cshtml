@@ -1,0 +1,74 @@
+﻿@using System.ComponentModel
+@using System.Reflection
+@using VineBasementHelpers.Extensions
+
+@model  List<VineBasementHelpers.Models.VineyardModels.GET.GetAllVineyards>
+
+@{
+    ViewData["Title"] = "Winnice";
+    //var listOfPropertiesNames=Model.FirstOrDefault().GetObjectDisplayNames();
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Spis winnic</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Vineyard" asp-action="AddVineyard" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>&nbsp; Dodaj nową winnice
+            </a>
+        </div>
+    </div>
+</div>
+<br/>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      @* @foreach(var propertyName in listOfPropertiesNames)
+            {
+                if(!propertyName.Contains("Identyfikator"))
+                {
+                    <th scope="col">@propertyName <input /></th>
+                    
+                }
+            }
+             <th scope="col"><button class="btn btn-primary">Szukaj</button></th>*@
+         <form method="post" asp-controller="Vineyard" asp-action="Filter">
+             <th scope="col">Nazwa winnicy <input name="VineyardName" class="form-control"/></th>
+             <th scope="col">Miasto winnicy <input name="VineyardCity" class="form-control"/></th>
+             <th scope="col">Region winnicy <input name="VineyardCountry" class="form-control"/></th>
+             <th scope="col">Kraj winnicy <input name="VineyardRegion" class="form-control"/></th>
+             <th scope="col">Rok założenia winnicy <input name="VineyardYearOfFoundation" class="form-control"/></th>
+             <th scope="col"><button type="submit" class="btn btn-primary" style="width:250px;">Szukaj</button></th>
+         </form>
+
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var obj in Model)
+        {
+            <tr class="table-dark">
+                <td>@obj.VineyardName</td>
+                <td>@obj.VineyardCity</td>
+                <td>@obj.VineyardCountry</td>
+                <td>@obj.VineyardRegion</td>
+                <td>@obj.VineyardYearOfFoundation</td>
+                <td class="text-center">
+                    <div class="w-100 btn-group" role="group">
+                        <a asp-controller="Vineyard" asp-route-Id="@obj.VineyardId" asp-action="EditVineyard" class="btn btn-info">Edytuj</a>
+                        <a asp-controller="Vineyard" asp-route-Id="@obj.VineyardId" asp-action="Delete" class="btn btn-warning">Usuń</a>
+                    </div>
+                </td>
+            </tr>
+        }
+  </tbody>
+</table>
+
+
+
+
+
+
